@@ -1,0 +1,98 @@
+[
+  {
+    "departureStation": "BUD",
+    "arrivalStation": "LTN",
+    "departureDateTime": "2025-07-09T06:00:00",
+    "arrivalDateTime": "2025-07-09T07:45:00",
+    "fares": [
+      {
+        "price": {
+          "amount": 10590,
+          "currencyCode": "HUF"
+        },
+        "remainingTickets": 1,
+        "bundle": "basic"
+      },
+      {
+        "price": {
+          "amount": 35597,
+          "currencyCode": "HUF"
+        },
+        "remainingTickets": 1,
+        "bundle": "standard"
+      },
+      {
+        "price": {
+          "amount": 47493,
+          "currencyCode": "HUF"
+        },
+        "remainingTickets": 1,
+        "bundle": "plus"
+      }
+    ]
+  },
+  {
+    "departureStation": "BUD",
+    "arrivalStation": "LTN",
+    "departureDateTime": "2025-07-09T13:15:00",
+    "arrivalDateTime": "2025-07-09T15:00:00",
+    "fares": [
+      {
+        "price": {
+          "amount": 21290,
+          "currencyCode": "HUF"
+        },
+        "remainingTickets": 1,
+        "bundle": "basic"
+      },
+      {
+        "price": {
+          "amount": 45875,
+          "currencyCode": "HUF"
+        },
+        "remainingTickets": 1,
+        "bundle": "standard"
+      },
+      {
+        "price": {
+          "amount": 58193,
+          "currencyCode": "HUF"
+        },
+        "remainingTickets": 1,
+        "bundle": "plus"
+      }
+    ]
+  },
+  {
+    "departureStation": "BUD",
+    "arrivalStation": "LTN",
+    "departureDateTime": "2025-07-09T17:40:00",
+    "arrivalDateTime": "2025-07-09T19:25:00",
+    "fares": [
+      {
+        "price": {
+          "amount": 23890,
+          "currencyCode": "HUF"
+        },
+        "remainingTickets": 1,
+        "bundle": "basic"
+      },
+      {
+        "price": {
+          "amount": 48475,
+          "currencyCode": "HUF"
+        },
+        "remainingTickets": 1,
+        "bundle": "standard"
+      },
+      {
+        "price": {
+          "amount": 60793,
+          "currencyCode": "HUF"
+        },
+        "remainingTickets": 1,
+        "bundle": "plus"
+      }
+    ]
+  }
+]

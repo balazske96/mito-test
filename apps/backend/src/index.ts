@@ -1,4 +1,5 @@
 import express, { Request, Response } from 'express';
+import apiRoutes from './routes/api';
 
 const app = express();
 const PORT = process.env.PORT || 4000;
@@ -7,12 +8,17 @@ const PORT = process.env.PORT || 4000;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Routes
+// Basic Routes
 app.get('/', (req: Request, res: Response) => {
   res.json({
-    message: 'Welcome to the Express.js API!',
+    message: 'Welcome to the Flight Search API!',
     timestamp: new Date().toISOString(),
-    version: '1.0.0'
+    version: '1.0.0',
+    endpoints: {
+      flights: '/api/flights',
+      stations: '/api/stations',
+      health: '/health'
+    }
   });
 });
 
@@ -24,13 +30,8 @@ app.get('/health', (req: Request, res: Response) => {
   });
 });
 
-app.get('/api/hello/:name?', (req: Request, res: Response) => {
-  const name = req.params.name || 'World';
-  res.json({
-    message: `Hello, ${name}!`,
-    timestamp: new Date().toISOString()
-  });
-});
+// API Routes
+app.use('/api', apiRoutes);
 
 // 404 handler
 app.use('*', (req: Request, res: Response) => {
@@ -52,6 +53,5 @@ app.use((err: Error, req: Request, res: Response, _next: any) => {
 
 // Start server
 app.listen(PORT, () => {
-  console.log(`🚀 Express server is running on http://localhost:${PORT}`);
-  console.log(`📊 Health check available at http://localhost:${PORT}/health`);
+  console.log(`Server is running on port ${PORT}`);
 });
