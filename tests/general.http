@@ -1,0 +1,25 @@
+### General API Tests
+
+@baseUrl = http://localhost:4000
+
+### Test 1: Root endpoint
+GET {{baseUrl}}/
+
+### Test 2: Health check endpoint
+GET {{baseUrl}}/health
+
+### Test 3: Non-existent endpoint (404 test)
+GET {{baseUrl}}/nonexistent
+
+### Test 4: Invalid API path
+GET {{baseUrl}}/api/invalid
+
+### Test 5: Test CORS and basic headers
+GET {{baseUrl}}/api/flights
+Content-Type: application/json
+
+### Test 6: Test with invalid HTTP method on flights endpoint
+POST {{baseUrl}}/api/flights
+
+### Test 7: Test with invalid HTTP method on stations endpoint
+PUT {{baseUrl}}/api/stations

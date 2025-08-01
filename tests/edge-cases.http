@@ -1,0 +1,104 @@
+### Edge Cases and Error Scenarios Tests
+
+@baseUrl = http://localhost:4000/api
+
+### Flight Edge Cases
+
+### Test 1: Invalid price parameters (non-numeric)
+GET {{baseUrl}}/flights?minPrice=abc&maxPrice=def
+
+### Test 2: Negative price values
+GET {{baseUrl}}/flights?minPrice=-1000&maxPrice=-500
+
+### Test 3: Min price higher than max price
+GET {{baseUrl}}/flights?minPrice=50000&maxPrice=10000
+
+### Test 4: Invalid bundle type
+GET {{baseUrl}}/flights?bundle=premium
+
+### Test 5: Invalid boolean for availableOnly
+GET {{baseUrl}}/flights?availableOnly=maybe
+
+### Test 6: Invalid date format
+GET {{baseUrl}}/flights?departureDate=invalid-date
+
+### Test 7: Future date that doesn't exist in data
+GET {{baseUrl}}/flights?departureDate=2026-01-01
+
+### Test 8: Empty route parameters
+GET {{baseUrl}}/flights/route//
+
+### Test 9: Single slash in route
+GET {{baseUrl}}/flights/route/BUD/
+
+### Test 10: Very long station codes
+GET {{baseUrl}}/flights/route/VERYLONGCODE/ANOTHERLONGCODE
+
+### Test 11: Special characters in station codes
+GET {{baseUrl}}/flights/route/BUD%20TEST/LTN%20TEST
+
+### Station Edge Cases
+
+### Test 12: Empty IATA parameter
+GET {{baseUrl}}/stations?iata=
+
+### Test 13: Very long IATA code
+GET {{baseUrl}}/stations?iata=VERYLONGIATACODE
+
+### Test 14: Special characters in name search
+GET {{baseUrl}}/stations?name=London%20%26%20Paris
+
+### Test 15: Empty name parameter
+GET {{baseUrl}}/stations?name=
+
+### Test 16: Single character name search
+GET {{baseUrl}}/stations?name=L
+
+### Test 17: Numeric values in name search
+GET {{baseUrl}}/stations?name=123
+
+### Test 18: Special characters in IATA lookup
+GET {{baseUrl}}/stations/BUD%20TEST
+
+### Test 19: Very long station IATA in connections
+GET {{baseUrl}}/stations/VERYLONGIATACODE/connections
+
+### Test 20: Empty search term
+GET {{baseUrl}}/stations/search/
+
+### Test 21: Single character search
+GET {{baseUrl}}/stations/search/L
+
+### Test 22: Search with special characters
+GET {{baseUrl}}/stations/search/London%20%26%20Airports
+
+### Multiple Parameters Tests
+
+### Test 23: All flight filters combined
+GET {{baseUrl}}/flights?departureStation=BUD&arrivalStation=LTN&departureDate=2025-07-09&bundle=basic&minPrice=10000&maxPrice=25000&availableOnly=true
+
+### Test 24: All station filters combined
+GET {{baseUrl}}/stations?iata=BUD&name=Budapest&hasConnection=LTN
+
+### Test 25: Conflicting parameters (should still work)
+GET {{baseUrl}}/stations?iata=BUD&name=London
+
+### Performance and Load Tests
+
+### Test 26: Multiple rapid requests to flights endpoint
+GET {{baseUrl}}/flights
+
+###
+GET {{baseUrl}}/flights?departureStation=BUD
+
+###
+GET {{baseUrl}}/flights?arrivalStation=LTN
+
+### Test 27: Multiple rapid requests to stations endpoint
+GET {{baseUrl}}/stations
+
+###
+GET {{baseUrl}}/stations/BUD
+
+###
+GET {{baseUrl}}/stations/LTN/connections

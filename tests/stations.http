@@ -1,0 +1,66 @@
+### Station API Tests
+
+@baseUrl = http://localhost:4000/api
+
+### Test 1: Get all stations
+GET {{baseUrl}}/stations
+
+### Test 2: Get stations with IATA filter
+GET {{baseUrl}}/stations?iata=BUD
+
+### Test 3: Get stations with IATA filter (case insensitive)
+GET {{baseUrl}}/stations?iata=ltn
+
+### Test 4: Get stations with name filter (partial match)
+GET {{baseUrl}}/stations?name=London
+
+### Test 5: Get stations with name filter (full match)
+GET {{baseUrl}}/stations?name=Budapest
+
+### Test 6: Get stations with name filter (case insensitive)
+GET {{baseUrl}}/stations?name=london
+
+### Test 7: Get stations that have connection to specific airport
+GET {{baseUrl}}/stations?hasConnection=BUD
+
+### Test 8: Get stations that have connection to LTN
+GET {{baseUrl}}/stations?hasConnection=LTN
+
+### Test 9: Complex filter - stations with "Rome" in name
+GET {{baseUrl}}/stations?name=Rome
+
+### Test 10: Get specific station by IATA code (BUD)
+GET {{baseUrl}}/stations/BUD
+
+### Test 11: Get specific station by IATA code (LTN)
+GET {{baseUrl}}/stations/LTN
+
+### Test 12: Get specific station by IATA code (case insensitive)
+GET {{baseUrl}}/stations/bud
+
+### Test 13: Get specific station by IATA code (non-existent)
+GET {{baseUrl}}/stations/XYZ
+
+### Test 14: Get connections for BUD station
+GET {{baseUrl}}/stations/BUD/connections
+
+### Test 15: Get connections for LTN station
+GET {{baseUrl}}/stations/LTN/connections
+
+### Test 16: Get connections for non-existent station
+GET {{baseUrl}}/stations/XYZ/connections
+
+### Test 17: Search stations by name - "London"
+GET {{baseUrl}}/stations/search/London
+
+### Test 18: Search stations by name - "Paris"
+GET {{baseUrl}}/stations/search/Paris
+
+### Test 19: Search stations by name - partial match "Rom"
+GET {{baseUrl}}/stations/search/Rom
+
+### Test 20: Search stations by name - case insensitive "budapest"
+GET {{baseUrl}}/stations/search/budapest
+
+### Test 21: Search stations by name - non-existent
+GET {{baseUrl}}/stations/search/NonExistent

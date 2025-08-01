@@ -1,0 +1,60 @@
+### Flight API Tests
+
+@baseUrl = http://localhost:4000/api
+
+### Test 1: Get all flights
+GET {{baseUrl}}/flights
+
+### Test 2: Get flights with departure station filter
+GET {{baseUrl}}/flights?departureStation=BUD
+
+### Test 3: Get flights with arrival station filter
+GET {{baseUrl}}/flights?arrivalStation=LTN
+
+### Test 4: Get flights for specific route
+GET {{baseUrl}}/flights?departureStation=BUD&arrivalStation=LTN
+
+### Test 5: Get flights with departure date filter
+GET {{baseUrl}}/flights?departureDate=2025-07-09
+
+### Test 6: Get flights with price range filter
+GET {{baseUrl}}/flights?minPrice=15000&maxPrice=50000
+
+### Test 7: Get flights with bundle filter (basic)
+GET {{baseUrl}}/flights?bundle=basic
+
+### Test 8: Get flights with bundle filter (standard)
+GET {{baseUrl}}/flights?bundle=standard
+
+### Test 9: Get flights with bundle filter (plus)
+GET {{baseUrl}}/flights?bundle=plus
+
+### Test 10: Get only available flights
+GET {{baseUrl}}/flights?availableOnly=true
+
+### Test 11: Complex filter - BUD to LTN, available, basic bundle, max 25000 HUF
+GET {{baseUrl}}/flights?departureStation=BUD&arrivalStation=LTN&availableOnly=true&bundle=basic&maxPrice=25000
+
+### Test 12: Complex filter - departure date with price range
+GET {{baseUrl}}/flights?departureDate=2025-07-09&minPrice=20000&maxPrice=40000
+
+### Test 13: Get flights by specific route (BUD -> LTN)
+GET {{baseUrl}}/flights/route/BUD/LTN
+
+### Test 14: Get flights by specific route (LTN -> BUD)
+GET {{baseUrl}}/flights/route/LTN/BUD
+
+### Test 15: Get flights by specific route (case insensitive test)
+GET {{baseUrl}}/flights/route/bud/ltn
+
+### Test 16: Get flights by specific route (non-existent route)
+GET {{baseUrl}}/flights/route/NYC/LAX
+
+### Test 17: Get all flights from/to BUD station
+GET {{baseUrl}}/flights/station/BUD
+
+### Test 18: Get all flights from/to LTN station
+GET {{baseUrl}}/flights/station/LTN
+
+### Test 19: Get flights from/to non-existent station
+GET {{baseUrl}}/flights/station/XYZ
