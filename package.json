@@ -9,13 +9,22 @@
   ],
   "scripts": {
     "build": "npm run build --workspaces",
-    "dev": "npm run dev --workspaces",
-    "test-api": "./run-tests.sh",
+    "dev": "concurrently \"npm run backend:dev\" \"npm run frontend:dev\" --names \"backend,frontend\" --prefix-colors \"blue,green\"",
+    "test": "./run-tests.sh",
     "clean": "npm run clean --workspaces",
     "backend:dev": "npm run dev --workspace=apps/backend",
-    "frontend:dev": "npm run dev --workspace=apps/frontend"
+    "frontend:dev": "npm run dev --workspace=apps/frontend",
+    "lint": "eslint . --ext .ts,.js,.vue",
+    "format": "prettier --check ."
   },
   "devDependencies": {
+    "@nuxtjs/eslint-config-typescript": "^12.0.0",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "concurrently": "9.2.0",
+    "eslint": "^8.45.0",
+    "eslint-config-prettier": "^9.0.0",
+    "prettier": "^3.0.0",
     "typescript": "^5.0.0"
   },
   "engines": {
@@ -23,4 +32,3 @@
     "npm": ">=9.0.0"
   }
 }
-

@@ -1,0 +1,14 @@
+node_modules/
+dist/
+.nuxt/
+.output/
+coverage/
+*.min.js
+build/
+out/
+.turbo/
+.vscode/
+.idea/
+*.log
+*.tsbuildinfo
+

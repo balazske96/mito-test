@@ -62,7 +62,6 @@ dist
 
 # Gatsby files
 .cache/
-public
 
 # Build outputs
 build/
