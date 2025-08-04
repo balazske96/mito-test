@@ -14,10 +14,18 @@
       </div>
       <div class="grid grid-cols-1 md:grid-cols-2 p-[25px]">
         <!-- Origin -->
-        <div class="flex flex-col">
+        <!--        <div class="flex flex-col">
           <label for="origin">Origin</label>
           <input type="text" id="origin" />
-        </div>
+        </div>-->
+
+        <v-text-field
+          label="Label"
+          variant="solo"
+          type="date"
+          class="shadow-none"
+        ></v-text-field>
+
         <!-- Destination -->
         <div class="flex flex-col">
           <label for="destination">Destination</label>
