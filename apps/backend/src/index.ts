@@ -1,4 +1,5 @@
 import express, { Request, Response } from 'express';
+import cors from 'cors';
 import apiRoutes from './routes/api';
 import { specs, swaggerUi } from './swagger';
 
@@ -6,6 +7,12 @@ const app = express();
 const PORT = process.env.PORT || 4000;
 
 // Middleware
+app.use(
+  cors({
+    origin: 'http://localhost:3000',
+    credentials: true,
+  })
+);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 

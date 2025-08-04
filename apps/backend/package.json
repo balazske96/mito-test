@@ -12,6 +12,8 @@
   },
   "dependencies": {
     "@mito-test/shared-types": "*",
+    "@types/cors": "2.8.19",
+    "cors": "2.8.5",
     "express": "4.21.2",
     "swagger-jsdoc": "6.2.8",
     "swagger-ui-express": "5.0.1"
