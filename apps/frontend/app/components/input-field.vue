@@ -2,7 +2,6 @@
   import { ref } from 'vue';
 
   interface InputProps {
-    inputValue: string;
     label: string;
     type?: string;
     id?: string;
@@ -10,22 +9,16 @@
     name?: string;
   }
 
+  const model = defineModel();
+
   const {
-    inputValue = '',
     type = 'text',
     id = '',
     error = '',
     name = '',
   } = defineProps<InputProps>();
 
-  const emit = defineEmits(['update:inputValue', 'focus', 'blur']);
-
   const isFocused = ref(false);
-
-  const updateValue = (event: Event) => {
-    const target = event.target as HTMLInputElement;
-    emit('update:inputValue', target.value);
-  };
 </script>
 
 <template>
@@ -35,9 +28,9 @@
         :for="id"
         class="absolute left-[15px] pointer-events-none transition-all duration-200 ease-in-out"
         :class="{
-          'top-[2px] text-[10px]': isFocused || inputValue || type === 'date',
+          'top-[2px] text-[10px]': isFocused || model || type === 'date',
           'top-1/2 text-base transform -translate-y-1/2':
-            !isFocused && !inputValue && type !== 'date',
+            !isFocused && !model && type !== 'date',
           'text-gray-500': !error,
           'text-mito': !!error,
         }"
@@ -52,8 +45,7 @@
           'border-mito border-2 bg-mito bg-opacity-5 shadow-[0_0_5px_5px_rgba(198,0,126,0.05)] focus:border-mito':
             !!error,
         }"
-        :value="inputValue"
-        @input="updateValue"
+        v-model="model"
         @focus="isFocused = true"
         @blur="isFocused = false"
         :name="name"
