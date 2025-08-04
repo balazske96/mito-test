@@ -1,3 +1,43 @@
+<script setup lang="ts">
+  import { ref } from 'vue';
+
+  interface InputProps {
+    inputValue: string;
+    label: string;
+    type?: string;
+    id?: string;
+    error?: string;
+    name?: string;
+  }
+
+  const {
+    inputValue = '',
+    type = 'text',
+    id = '',
+    error = '',
+    name = '',
+  } = defineProps<InputProps>();
+
+  const emit = defineEmits(['update:inputValue', 'focus', 'blur']);
+
+  const isFocused = ref(false);
+
+  const updateValue = (event: Event) => {
+    const target = event.target as HTMLInputElement;
+    emit('update:inputValue', target.value);
+  };
+
+  const handleFocus = (event: FocusEvent) => {
+    isFocused.value = true;
+    emit('focus', event);
+  };
+
+  const handleBlur = (event: FocusEvent) => {
+    isFocused.value = false;
+    emit('blur', event);
+  };
+</script>
+
 <template>
   <div>
     <div class="relative mb-[18px] font-sans">
@@ -17,15 +57,15 @@
       <input
         :id="id"
         :type="type"
-        class="w-full px-3 py-3 border border-gray-400 rounded-[2px] text-base transition-colors duration-200 ease-in-out box-border focus:outline-none focus:border-blue-500"
+        class="hidden-date-placeholder w-full px-3 py-3 border border-gray-400 rounded-[2px] text-base transition-colors duration-200 ease-in-out box-border focus:outline-none focus:border-blue-500"
         :class="{
           'border-mito border-2 bg-mito bg-opacity-5 shadow-[0_0_5px_5px_rgba(198,0,126,0.05)] focus:border-mito':
             !!error,
         }"
         :value="inputValue"
         @input="updateValue"
-        @focus="isFocused = true"
-        @blur="isFocused = false"
+        @focus="handleFocus"
+        @blur="handleBlur"
         :name="name"
       />
       <div>
@@ -50,30 +90,3 @@
     </div>
   </div>
 </template>
-
-<script setup lang="ts">
-  interface InputProps {
-    inputValue: string;
-    label: string;
-    type?: string;
-    id?: string;
-    error?: string;
-    name?: string;
-  }
-
-  const {
-    inputValue = '',
-    type = 'text',
-    id = '',
-    error = '',
-  } = defineProps<InputProps>();
-
-  const emit = defineEmits(['update:inputValue']);
-
-  const isFocused = ref(false);
-
-  const updateValue = (event: Event) => {
-    const target = event.target as HTMLInputElement;
-    emit('update:inputValue', target.value);
-  };
-</script>

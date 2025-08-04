@@ -1,3 +1,19 @@
+<script setup lang="ts">
+  import { ref } from 'vue';
+
+  const props = defineProps<{
+    origin?: string;
+    destination?: string;
+    departure?: string;
+    returnDate?: string;
+  }>();
+
+  const origin = ref(props.origin || '');
+  const destination = ref(props.destination || '');
+  const departure = ref(props.departure || '');
+  const returnDate = ref(props.returnDate || '');
+</script>
+
 <template>
   <form>
     <div class="bg-white pb-[20px] rounded-b-[2px]">
@@ -14,25 +30,37 @@
       </div>
       <div class="grid grid-cols-1 md:grid-cols-2 p-[25px]">
         <!-- Origin -->
-        <div class="flex flex-col">
-          <label for="origin">Origin</label>
-          <input type="text" id="origin" />
-        </div>
+        <InputField
+          @update:input-value="origin = $event"
+          :input-value="origin"
+          label="Origin"
+          id="origin"
+          type="text"
+        />
         <!-- Destination -->
-        <div class="flex flex-col">
-          <label for="destination">Destination</label>
-          <input type="text" id="destination" />
-        </div>
-        <!-- Departure -->
-        <div class="flex flex-col">
-          <label for="departure">Departure</label>
-          <input type="date" id="departure" />
-        </div>
-        <!-- Return -->
-        <div class="flex flex-col">
-          <label for="Return">Return</label>
-          <input type="date" id="return" />
-        </div>
+        <InputField
+          @update:input-value="destination = $event"
+          :input-value="destination"
+          label="Destination"
+          id="destination"
+          type="text"
+        />
+        <!-- Departure date -->
+        <InputField
+          @update:input-value="departure = $event"
+          :input-value="departure"
+          label="Departure"
+          id="departure"
+          type="date"
+        />
+        <!-- Return date -->
+        <InputField
+          @update:input-value="returnDate = $event"
+          :input-value="returnDate"
+          label="Return"
+          id="returnDate"
+          type="date"
+        />
       </div>
       <div class="flex justify-center">
         <button
