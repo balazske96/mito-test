@@ -210,12 +210,7 @@
         />
       </div>
       <div class="flex justify-center">
-        <button
-          type="submit"
-          class="bg-[#3434E0] text-white py-[15px] px-[80px] rounded-[3px] text-[18px] hover:bg-[#3322a0]"
-        >
-          Search
-        </button>
+        <Button type="submit">Search</Button>
       </div>
     </div>
   </form>
