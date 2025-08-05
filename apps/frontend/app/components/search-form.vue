@@ -14,6 +14,12 @@
     returnDate?: string;
   }>();
 
+  const { data } = await useFetch<{ data: Station[] }>(
+    'http://localhost:4000/api/stations'
+  );
+
+  let availableStationsData: Station[] = data.value?.data ?? [];
+
   const validationSchema = yup.object({
     origin: yup.string().required('Origin is required'),
     destination: yup
@@ -92,22 +98,7 @@
     useField('returnDate');
 
   const availableStationsLoading = ref(true);
-  const availableStations = ref<Station[]>([]);
-
-  onMounted(async () => {
-    /** TODO server fetch these stations */
-    const response = await fetch('http://localhost:4000/api/stations');
-
-    if (response.ok) {
-      const { data } = await response.json();
-      availableStations.value = data;
-    } else {
-      /** TODO Handle error properly, maybe show a toast or a notification. */
-      alert('Failed to fetch stations');
-    }
-
-    availableStationsLoading.value = false;
-  });
+  const availableStations = ref<Station[]>(availableStationsData ?? []);
 
   const selectedOriginStation = ref<Station | null>(null);
   const selectedDestinationStation = ref<Station | null>(null);
