@@ -10,6 +10,7 @@
   }
 
   const model = defineModel();
+  const emit = defineEmits(['focus', 'blur']);
 
   const {
     type = 'text',
@@ -19,6 +20,16 @@
   } = defineProps<InputProps>();
 
   const isFocused = ref(false);
+  
+  function handleFocus(event: FocusEvent) {
+    isFocused.value = true;
+    emit('focus', event);
+  }
+  
+  function handleBlur(event: FocusEvent) {
+    isFocused.value = false;
+    emit('blur', event);
+  }
 </script>
 
 <template>
@@ -46,8 +57,8 @@
             !!error,
         }"
         v-model="model"
-        @focus="isFocused = true"
-        @blur="isFocused = false"
+        @focus="handleFocus"
+        @blur="handleBlur"
         :name="name"
       />
       <div>
