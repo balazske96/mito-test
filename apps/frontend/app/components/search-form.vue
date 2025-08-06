@@ -14,8 +14,10 @@
     returnDate?: string;
   }>();
 
+  const config = useRuntimeConfig();
+
   const { data } = await useFetch<{ data: Station[] }>(
-    'http://localhost:4000/api/stations'
+    `${config.public.apiBase}/api/stations`
   );
 
   let availableStationsData: Station[] = data.value?.data ?? [];
