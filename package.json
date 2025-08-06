@@ -3,12 +3,13 @@
   "version": "1.0.0",
   "description": "Mito Test Monorepo - Flight Search Application",
   "private": true,
+  "packageManager": "npm@10.9.2",
   "workspaces": [
     "apps/*",
     "packages/*"
   ],
   "scripts": {
-    "build": "npm run build --workspaces",
+    "build": "turbo build",
     "dev": "concurrently \"npm run backend:dev\" \"npm run frontend:dev\" --names \"backend,frontend\" --prefix-colors \"blue,green\"",
     "test": "./run-tests.sh",
     "clean": "npm run clean --workspaces",
@@ -25,6 +26,7 @@
     "eslint": "^8.45.0",
     "eslint-config-prettier": "^9.0.0",
     "prettier": "^3.0.0",
+    "turbo": "2.5.5",
     "typescript": "^5.0.0"
   },
   "engines": {

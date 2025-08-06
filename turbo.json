@@ -1,0 +1,29 @@
+{
+  "$schema": "https://turborepo.com/schema.json",
+  "globalEnv": [
+    "API_BASE_URL"
+  ],
+  "tasks": {
+    "build": {
+      "inputs": [
+        "src/**/*",
+        "app/**/*",
+        "tsconfig.json",
+        "package.json",
+        "nuxt.config.ts"
+      ],
+      "dependsOn": [
+        "^build"
+      ],
+      "outputs": [
+        "dist/**",
+        ".nuxt/**",
+        ".output/**"
+      ]
+    },
+    "dev": {
+      "persistent": true,
+      "cache": false
+    }
+  }
+}
