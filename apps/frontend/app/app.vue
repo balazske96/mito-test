@@ -12,5 +12,6 @@
     background-repeat: no-repeat;
     height: 100vh;
     margin: 0;
+    background-attachment: fixed;
   }
 </style>
