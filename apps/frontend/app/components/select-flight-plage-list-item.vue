@@ -34,6 +34,10 @@
   };
 
   function addToCart() {
+    /**
+     * TODO
+     * Handle adding the flight to the cart.
+     */
     alert('Ticket added to cart');
   }
 </script>

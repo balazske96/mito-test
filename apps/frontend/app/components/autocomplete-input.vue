@@ -1,4 +1,9 @@
 <script setup lang="ts">
+  /**
+   * TODO
+   * Refactor the overall structure and logic of the component.
+   */
+
   import type { Station } from '@mito-test/shared-types';
   import { ref } from 'vue';
 

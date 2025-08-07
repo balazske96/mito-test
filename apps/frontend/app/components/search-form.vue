@@ -16,6 +16,11 @@
 
   const config = useRuntimeConfig();
 
+  /**
+   * TODO
+   * Refactor the way we fetch and then pass the suggestions to the
+   * AutocompleteInput component.
+   */
   const { data } = await useFetch<{ data: Station[] }>(
     `${config.public.apiBase}/api/stations`
   );
@@ -115,6 +120,10 @@
     destinationFormValue.value = station.shortName;
   };
 
+  /**
+   * TODO
+   * Make validation schema more strict, maybe do some prefetch, etc.
+   */
   const onSubmit = handleSubmit(async (values) => {
     await navigateTo({
       path: '/select-flight',

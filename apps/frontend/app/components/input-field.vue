@@ -9,6 +9,10 @@
     name?: string;
   }
 
+  /**
+   * TODO
+   * Spend some time to understand models and emits in Vue.
+   * */
   const model = defineModel();
   const emit = defineEmits(['focus', 'blur']);
 
@@ -19,6 +23,10 @@
     name = '',
   } = defineProps<InputProps>();
 
+  /**
+   * TODO
+   * Check it this can be omitted.
+   * */
   const isFocused = ref(false);
 
   function handleFocus(event: FocusEvent) {

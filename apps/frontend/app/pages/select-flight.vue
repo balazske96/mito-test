@@ -38,7 +38,7 @@
   });
 
   const [originAirport, destinationAirport] = await Promise.all([
-    /** TODO handle request error */
+    /** TODO handle request errors */
     useFetch<ApiResponse<Station>>(
       `${config.public.apiBase}/api/stations/${origin}`
     ).then((response) => response.data.value?.data!),
@@ -48,6 +48,5 @@
     ).then((response) => response.data.value?.data!),
   ]);
 
-  // Handle potential errors
   const flights = computed(() => flightsData.value?.data || []);
 </script>
