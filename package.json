@@ -10,7 +10,7 @@
   ],
   "scripts": {
     "build": "turbo build",
-    "dev": "concurrently \"npm run backend:dev\" \"npm run frontend:dev\" --names \"backend,frontend\" --prefix-colors \"blue,green\"",
+    "dev": "turbo dev",
     "test": "./run-tests.sh",
     "clean": "npm run clean --workspaces",
     "backend:dev": "npm run dev --workspace=apps/backend",

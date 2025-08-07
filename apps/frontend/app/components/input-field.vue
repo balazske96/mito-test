@@ -20,12 +20,12 @@
   } = defineProps<InputProps>();
 
   const isFocused = ref(false);
-  
+
   function handleFocus(event: FocusEvent) {
     isFocused.value = true;
     emit('focus', event);
   }
-  
+
   function handleBlur(event: FocusEvent) {
     isFocused.value = false;
     emit('blur', event);
@@ -53,6 +53,7 @@
         :type="type"
         class="min-w-[250px] w-full px-3 py-3 border border-gray-400 rounded-[2px] text-base transition-colors duration-200 ease-in-out box-border focus:outline-none focus:border-blue-500"
         :class="{
+          'reset-style': type === 'date',
           'border-mito border-2 bg-mito bg-opacity-5 shadow-[0_0_5px_5px_rgba(198,0,126,0.05)] focus:border-mito':
             !!error,
         }"
@@ -83,3 +84,16 @@
     </div>
   </div>
 </template>
+
+<style scoped>
+  /* On IOS the datepicker looks different so we tweak the styles a little bit */
+  .reset-style {
+    font-family: inherit;
+    font-size: 16px;
+    padding: 12px;
+    @apply border-gray-400;
+    border-radius: 2px;
+    color: #333;
+    background-color: white;
+  }
+</style>
